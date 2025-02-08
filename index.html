@@ -1,0 +1,133 @@
+# Create an HTML file with a 2-minute countdown timer
+
+html_content = """<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Surprise Message</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            text-align: center;
+
+            margin: 50px;
+
+            background-color: #fbeee6;
+
+        }
+
+        #timer {
+
+            font-size: 30px;
+
+            margin-top: 20px;
+
+            color: #ff5733;
+
+        }
+
+        #message {
+
+            display: none;
+
+            font-size: 24px;
+
+            margin-top: 20px;
+
+            color: #4CAF50;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Wait for the Surprise! ⏳</h1>
+
+    <p>Your message will appear after 2 minutes...</p>
+
+    <div id="timer">02:00</div>
+
+    <div id="message">
+
+        <h2>Hey bestie! ❤️</h2>
+
+        <p>Kaisi ho? I hope acchi hogi! Mujhe yakin hai ki apko ye surprise pasand aaya hoga! 
+
+        Maine ye personalized mug tumhare liye specially banwaya hai, taaki har baar tum chai ya coffee piyo, ek special feel aaye. ☕ 
+
+        Hope ye hamesha tumhare chehre par smile laayega. Miss you, my golu molu bestie 🤗❤️</p>
+
+    </div>
+
+
+
+    <script>
+
+        let timeLeft = 120;
+
+        const timerElement = document.getElementById("timer");
+
+        const messageElement = document.getElementById("message");
+
+
+
+        function updateTimer() {
+
+            let minutes = Math.floor(timeLeft / 60);
+
+            let seconds = timeLeft % 60;
+
+            timerElement.textContent = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+            
+
+            if (timeLeft > 0) {
+
+                timeLeft--;
+
+                setTimeout(updateTimer, 1000);
+
+            } else {
+
+                timerElement.style.display = "none";
+
+                messageElement.style.display = "block";
+
+            }
+
+        }
+
+
+
+        updateTimer();
+
+    </script>
+
+</body>
+
+</html>
+
+"""
+
+
+
+# Save the HTML file
+
+html_path = "/mnt/data/surprise_message.html"
+
+with open(html_path, "w") as file:
+
+    file.write(html_content)
